@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title></title>
+		<meta charset="utf-8"> <!--Latin-->
+	    <meta name="viewport" content="width=device-width, user-scalable=no"> <!--user-scalable Elimina el zoom, width define el ancho de pantalla-->
+	    <link type="text/css" href="css/estilos.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1>Seccion Secreta</h1>
+		<p>Escribe el contenido de tu acordeón en el siguiente recuadro:</p>
+		<textarea id="a" placeholder="Tu acordeon aqui"></textarea>
+		<button onclick="guardar()">Guardar</button>
+
+
+		<script>
+			window.addEventListener('load',cargar,true);
+
+			function cargar(){
+				if(localStorage.getItem('acordeon')){
+					acordeonGuardado = localStorage.getItem('acordeon');
+					document.getElementById('a').value=acordeonGuardado;
+				}
+			}
+
+			function guardar(){
+				acordeon=document.getElementById('a').value;
+				//LOCALSTORAGE
+				//Almacenamiento local en el navegador
+				// El objeto "localStorage" tiene el metodo
+				// "setItem" que recibe dos argumentos,
+				// el primero es el nombre de la variable o llave
+				// El segundo es el valor que se guardara
+				localStorage.setItem('acordeon',acordeon);
+				// Regresar a la calculadora
+				
+				window.location.assign('index.html');
+			}
+		</script>
+	</body>
+
+	<style>
+
+	body,html{
+		height: 100%;
+	}
+		
+		h1{
+			text-align: center;
+			color: white;
+			font-family: 'Segoe UI','Arial','Sans-serif';
+			font-weight: normal;
+			margin: 10px 0px;
+		}
+
+		p{
+			text-align: center;
+			color: rgba(255,255,255,.5);
+			font-size: 1em;
+			font-family: 'Segoe UI','Arial','Sans-serif';
+			margin: 10px 30px;
+		}
+		
+		textarea{
+			width: 90%;	
+			
+			height: 50%;
+			
+			font-size: 1em;
+			font-family: 'Segoe UI','Arial','Sans-serif';
+			background: rgba(0,0,0,.3);
+			border: none;
+			border-radius: 10px;
+			padding: 10px;
+			outline: none;
+			color: rgba(255,255,255,.7);
+			resize: none;
+		}
+
+		button{
+			width: 50%;
+			height: 40px;
+			background: rgba(255,255,255,.6);
+			font-size: 1.5em;	
+			margin-top: 20px;
+			color: rgba(0,0,0,.8);
+			border-radius: 5px;
+			outline: none;
+		}
+	</style>
+</html>
